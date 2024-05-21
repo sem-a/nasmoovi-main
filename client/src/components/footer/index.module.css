@@ -1,0 +1,24 @@
+footer.footer {
+    background-color: #776F60;
+    width: 100%;
+    padding: 28px 0px;
+    color: white;
+}
+
+.logo h2 {
+    font-size: 36px;
+    font-family: 'Novelist';
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 21px 0 14px 0;
+}
+
+.copyright {
+    font-size: 16px;
+    margin-top: 14px;
+}
+
+.year {
+    font-size: 14px;
+    margin-top: 7px;
+}

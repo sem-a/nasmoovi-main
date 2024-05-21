@@ -1,0 +1,30 @@
+.loadingScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f6f6f4;
+    z-index: 1000; /* Убедитесь, что загрузочный экран находится над всеми другими элементами */
+  }
+  
+  .loadingCircle {
+    border: 5px solid #776F60;
+    border-top: 5px solid #776F60;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

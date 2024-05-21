@@ -1,0 +1,49 @@
+.weedingPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.imagesContainer {
+    display: flex;
+    justify-content: center;
+    gap: 7px; /* Расстояние между изображениями */
+}
+.line {
+    margin-top: 7px;
+    width: 50%;
+    height: 1px;
+    background-color: #776F60;
+}
+.previewImage {
+    width: 269px; /* Ширина изображения */
+    height: 566px; /* Высота изображения */
+    object-fit: cover; /* Обрезка изображения для поддержания пропорций */
+}
+
+.caption { /* Отступ подписи от изображений */
+    margin-top: 7px;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 940px) {
+    .previewImage {
+        width: 200px;
+        height: 421px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .previewImage {
+        width: 150px;
+        height: 421px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .weedingPreview {
+        align-items: center;
+    }
+    .line {
+        width: 90%;
+    }
+}

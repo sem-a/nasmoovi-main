@@ -1,0 +1,26 @@
+/* AdminContainer */
+
+.adminUser {
+    padding: 89px 0px 14px 0px;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    gap: 14px;
+}
+
+/*******************/
+
+/* Container */ 
+
+.container {
+    padding: 0 42px;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/*******************/

@@ -1,0 +1,63 @@
+.slideContent {
+    margin: 0 auto;
+    width: 70%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.slideComment {
+    margin-top: auto;
+    position: relative;
+}
+.slideAbsoluteSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.slideComment p {
+    font-size: 32px;
+    text-align: justify;
+}
+.author {
+    position: relative;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 49px;
+}
+.line {
+    position: absolute;
+    top: -7px;
+    right: 0;
+    width: 147px;
+    height: 1px;
+    background-color: #776f60;
+}
+/* Стили для изменения цвета стрелок */
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #776f60; /* Установите желаемый цвет для стрелок */
+}
+
+/* Стили для изменения цвета псевдоэлементов, которые формируют стрелки */
+:global(.swiper-button-next)::after,
+:global(.swiper-button-prev)::after {
+  color: #776f60; /* Установите желаемый цвет для стрелок */
+}
+
+
+@media screen and (max-width: 720px) {
+    .slideComment p {
+        font-size: 24px;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .slideComment p {
+        font-size: 20px;
+        text-align: justify;
+    }
+}

@@ -1,0 +1,207 @@
+.welcome {
+    height: calc(100vh - 75px);
+    padding-top: 75px;
+    position: relative;
+}
+
+.marquee {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* portfolio */
+
+.portfolio {
+    height: 100vh;
+    overflow: hidden;
+    padding-top: 75px;
+}
+.row {
+    height: calc(100vh - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.col img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 1s ease 0s;
+    cursor: pointer;
+}
+.portfolioAbs {
+    position: absolute;
+    top: 21px;
+    cursor: pointer;
+    z-index: 10;
+}
+.portfolioAbs:hover img.colImg{
+    filter: grayscale(0%);
+}
+.col img:hover {
+    filter: grayscale(0%);
+}
+/*****************/
+
+/* about */
+
+/* Comment */
+.about {
+    width: 100vw;
+    height: 100vh;
+    padding: 100px 0px;
+}
+
+.aboutGrid {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 32% 68%;
+    height: calc(100vh - 250px);
+}
+
+.aboutMeText {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+.aboutMePhoto {
+    padding-top: 21px;
+    grid-column: span 1;
+    grid-row: span 1;
+}
+.aboutMeVideo {
+    padding-left: 21px;
+    grid-row: span 2;
+}
+
+.aboutMePhoto img,
+.aboutMeVideo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aboutMeText p {
+    width: 60%; /* Задаем ширину текста на 100% блока */
+    font-size: 20px;
+    margin-top: 7px;
+} 
+
+/***********/
+
+.comment {
+    height: 100vh;
+}
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/*****************/
+
+@media screen and (max-width: 950px) {
+    .aboutMeText p {
+        width: 90%; /* Задаем ширину текста на 100% блока */
+    } 
+}
+
+@media screen and (max-width: 720px) {
+    /* portfolio */
+    .portfolio {
+        overflow: visible;
+        height: 200vh;
+    }
+    .row {
+        display: block;
+    }
+    .col {
+        height: calc(100vh - 75px);
+        width: 100vw;
+    }
+    .col img {
+        height: calc(100vh - 75px);
+        width: 100vw;
+        filter: grayscale(0%);
+    }
+
+    .aboutGrid {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 32% 68%;
+        height: calc(100vh - 250px);
+    }
+    
+    .aboutMeText {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+    .aboutMePhoto {
+        display: none;
+    }
+    .aboutMeVideo {
+        padding-left: 0;
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+
+    .aboutMeText p {
+        width: 100%; /* Задаем ширину текста на 100% блока */
+        font-size: 20px;
+    } 
+}
+
+@media screen and (max-width: 450px) {
+    .portfolio {
+        overflow: hidden;
+        height: 100vh;
+        padding-top: 0;
+    }
+    .row {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        max-height: calc(100vh - 40px);
+        align-items: center;
+        justify-content: center;
+    }
+    .col {
+        display: block;
+        width: 100%;
+        max-height: 50%;
+    }
+    .col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .aboutMeText {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+    .aboutMePhoto {
+        display: none;
+    }
+    .aboutMeVideo {
+        padding-left: 0;
+        grid-row: span 1;
+        grid-column: span 2;
+    }
+
+    .aboutMeText p {
+        width: 100%; /* Задаем ширину текста на 100% блока */
+        font-size: 20px;
+    } 
+}
