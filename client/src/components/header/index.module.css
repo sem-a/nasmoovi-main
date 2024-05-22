@@ -52,13 +52,12 @@ span.navTriggerIcon::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #f6f6f4;
+    background-color: rgba(246, 246, 244, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 50;
     transition: top 0.3s ease-in-out;
-    overflow: hidden; /* Добавлено, чтобы предотвратить прокрутку страницы при открытом меню */
 }
 
 .menuOverlayOpen {

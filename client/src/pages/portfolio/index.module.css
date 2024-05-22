@@ -23,3 +23,26 @@
     grid-row: span 1;
     grid-column: span 2;
 }
+
+@media screen and (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 420px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .large {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+    .small {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+    .horizontal {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+}

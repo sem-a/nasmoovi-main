@@ -1,15 +1,17 @@
-import Layout from "../../components/layout";
 import { useParams } from "react-router-dom";
 import { useGetForIdPortfolioQuery } from "../../app/services/portfolio";
-import { Container } from "../../components/containers";
-import { PATHS } from "../../paths";
-import { Portfolio } from "@prisma/client";
-import styles from "./index.module.css";
 import LoadingScreen from "../../components/loading";
+import { Portfolio } from "@prisma/client";
+import BusinessCard from "../../components/portfolio-card";
+import Layout from "../../components/layout";
+import { Container } from "../../components/containers";
+
+import styles from "./index.module.css";
+import { PATHS } from "../../paths";
+import PortfolioCard from "../../components/portfolio-card";
 
 const PortfolioList = () => {
     const { id } = useParams<{ id: string }>();
-
     const {
         data: portfolio,
         isLoading,
@@ -19,75 +21,49 @@ const PortfolioList = () => {
     if (isLoading) {
         return <LoadingScreen />;
     }
+    if (isError) {
+        return <div>Ошибка!</div>;
+    }
     if (!portfolio) {
-        return <div>Undefined</div>;
+        return <div>Портфолио undefined</div>;
     }
 
-    const countCols = 4;
+    const countCol = 4;
+    let col = 0;
+    let row = 0;
 
-    const sortedPortfolio = portfolio.slice();
+    let portfolioList: React.ReactNode[] = [];
 
-    const isHorizontal = (item: Portfolio) => {
-        return item && item.width > item.height;
-    };
-    const isVertical = (item: Portfolio) => {
-        return item && item.width < item.height;
-    };
-    const swapItems = (arr: Portfolio[], index1: number, index2: number) => {
-        const temp = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = temp;
-        console.log("поменялось");
-    };
-
-    const portLenght = sortedPortfolio.length;
-
-    let indexCol = 0;
-
-    for (let currIndex = 0; currIndex < portLenght; currIndex++) {
-        indexCol += 1;
-
-        if (indexCol === 5) {
-            indexCol = 1;
+    for (let i = 0; i < portfolio.length; i++) {
+        const item = portfolio[i];
+        col += 1;
+        if (col == countCol + 1) {
+            col = 1;
         }
-
-        const currElement = sortedPortfolio[currIndex];
-        const nextElement = sortedPortfolio[currIndex + 1];
-
-        if (
-            isHorizontal(currElement) &&
-            indexCol === 2 &&
-            isHorizontal(nextElement)
-        ) {
-            for (let k = currIndex + 2; k < sortedPortfolio.length; k++) {
-                if (isVertical(sortedPortfolio[k])) {
-                    swapItems(sortedPortfolio, currIndex, k);
-                    break;
-                }
-            }
-        }
-        if (isHorizontal(currElement) && indexCol === 4) {
-            for (let k = currIndex; k < sortedPortfolio.length; k++) {
-                if (isVertical(sortedPortfolio[k])) {
-                    swapItems(sortedPortfolio, currIndex, k);
-                    break;
-                }
-            }
-        }
-
-        if (isHorizontal(currElement)) {
-            indexCol += 1;
-        }
-    }
-
-    const portfolioList = sortedPortfolio.map((item, index) => {
-        let imgClass =
+        const imgClass =
             item.width > item.height
                 ? styles.horizontal
-                : index % 6 === 0
-                ? styles.large
+                // : i % 6 === 0
+                // ? styles.large
                 : styles.small;
-        return (
+
+        if (imgClass == styles.horizontal) {
+            col += 1;
+        }
+        // if (imgClass == styles.large) {
+        //     col += 1;
+        // }
+
+        if (col == 5 && imgClass == styles.horizontal) {
+            col = 0;
+            portfolioList.push(
+                <PortfolioCard key={`portfolio-card-${item.id}`} />
+            );
+            i--;
+            continue;
+        }
+
+        portfolioList.push(
             <div
                 key={item.id}
                 className={`${styles.portfolioItem} ${imgClass}`}
@@ -95,9 +71,39 @@ const PortfolioList = () => {
                 <img src={`${PATHS.URL}${item.imgPath}`} alt={item.id} />
             </div>
         );
+    }
 
-        //return <div key={item.id} className={`gallery-item gallery-item-${index % 5}`}><img className={styles.portfolioImg} src={`http://localhost:8000/${item.imgPath}`} alt="Portfolio" /></div>;
-    });
+    // const portfolioList = portfolio.map((item, index) => {
+    //     col += 1;
+    //     if (col == 5) {
+    //         col = 1;
+    //     }
+
+    //     const imgClass =
+    //         item.width > item.height ? styles.horizontal : styles.small;
+    //     // : index % 6 === 0
+    //     // ? styles.large
+    //     // : styles.small;
+
+    //     if (imgClass == styles.horizontal || imgClass == styles.large) {
+    //         col += 1;
+    //     }
+
+    //     if (col == 5 && item.width > item.height) {
+    //         col = 0;
+    //         return <PortfolioCard key={item.id} />;
+    //     }
+
+    //     return (
+    //         <div
+    //             key={item.id}
+    //             className={`${styles.portfolioItem} ${imgClass}`}
+    //         >
+    //             <img src={`${PATHS.URL}${item.imgPath}`} alt={item.id} />
+    //         </div>
+    //     );
+    // });
+
     return <div className={styles.gallery}>{portfolioList}</div>;
 };
 

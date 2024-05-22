@@ -1,0 +1,34 @@
+.businessCard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-family: "Novelist";
+    border: solid #776F60 1px;
+}
+
+p.logo {
+    position: absolute;
+    bottom: 18px;
+    left: 14px; /* Центрируем текст относительно нижнего края */
+    transform: translateY(100%) rotate(-90deg);
+    transform-origin: 0 0;
+    font-size: 40px;
+    white-space: nowrap; /* Убедимся, что текст не переносится на новую строку */
+}
+
+p.city {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    font-size: 20px;
+    /* Остальные стили */
+}
+
+p.name {
+    position: absolute;
+    width: 130px;
+    top: 14px;
+    left: 14px;
+    font-size: 20px;
+    /* Остальные стили */
+}
