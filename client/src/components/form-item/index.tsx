@@ -2,6 +2,7 @@ import { Alert } from "antd";
 import { Button, Form, Input } from "antd";
 import { NamePath } from "antd/es/form/interface";
 import styles from "./index.module.css";
+import { PATHS } from "../../paths";
 
 type PropsCustomButton = {
     children: React.ReactNode;
@@ -125,7 +126,7 @@ export const ImageCheckbox: React.FC<PropsImageCheckBox> = ({
                 onChange={handleOnChange}
             />
             <img
-                src={`http://localhost:8000/${src}`}
+                src={`${PATHS.URL + src}`}
                 alt={alt}
                 className={styles.imageCheckboxImage}
             />
