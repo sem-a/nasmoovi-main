@@ -3,6 +3,7 @@ import { useGetWeedingPreviewQuery } from "../../app/services/portfolio";
 import { H4 } from '../title';
 import styles from "./index.module.css";
 import LoadingScreen from '../loading';
+import { PATHS } from '../../paths';
 
 type Props = {
     id: string;
@@ -34,7 +35,7 @@ const WeedingPreview: React.FC<Props> = ({id, name, alignItems}) => {
                 {weedingPreview?.slice(0, 3).map((image: WeedingPreviewImage) => (
                     <img
                         key={image.id}
-                        src={`http://localhost:8000/${image.imgPath}`}
+                        src={`${PATHS.URL}${image.imgPath}`}
                         alt={`Фото свадьбы ${name}`}
                         className={styles.previewImage}
                     />

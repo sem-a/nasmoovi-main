@@ -38,15 +38,16 @@
 /* Стили для изменения цвета стрелок */
 :global(.swiper-button-next),
 :global(.swiper-button-prev) {
-  color: #776f60; /* Установите желаемый цвет для стрелок */
+    color: rgba(119, 111, 96, 0.5); /* Установите желаемый цвет для стрелок */
+    
 }
 
 /* Стили для изменения цвета псевдоэлементов, которые формируют стрелки */
 :global(.swiper-button-next)::after,
 :global(.swiper-button-prev)::after {
-  color: #776f60; /* Установите желаемый цвет для стрелок */
+    color: rgba(119, 111, 96, 0.5); /* Установите желаемый цвет для стрелок */
+    border-width: 1px;
 }
-
 
 @media screen and (max-width: 720px) {
     .slideComment p {
@@ -60,4 +61,5 @@
         font-size: 20px;
         text-align: justify;
     }
+
 }

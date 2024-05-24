@@ -1,5 +1,5 @@
 .welcome {
-    height: calc(100vh - 75px);
+    height: calc(100vh);
     padding-top: 75px;
     position: relative;
 }
@@ -8,7 +8,7 @@
     width: 100%;
     height: 50px;
     position: absolute;
-    bottom: 0;
+    bottom: 42px;
     left: 0;
 }
 
@@ -59,14 +59,15 @@
 .about {
     width: 100vw;
     height: 100vh;
-    padding: 100px 0px;
+    padding: 21px 0px;
 }
 
 .aboutGrid {
     display: grid;
     grid-template-columns: 65% 35%;
     grid-template-rows: 32% 68%;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 42px);
+    gap: 21px;
 }
 
 .aboutMeText {
@@ -74,7 +75,7 @@
     grid-row: span 1;
 }
 .aboutMePhoto {
-    padding-top: 21px;
+    margin-top: 21px;
     grid-column: span 1;
     grid-row: span 1;
 }
@@ -110,6 +111,8 @@
 }
 
 /*****************/
+
+
 
 @media screen and (max-width: 950px) {
     .aboutMeText p {
