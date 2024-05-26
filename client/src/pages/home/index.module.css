@@ -1,7 +1,16 @@
 .welcome {
     height: calc(100vh);
-    padding-top: 75px;
     position: relative;
+}
+.welcomeImage {
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcomeImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .marquee {
@@ -67,7 +76,6 @@
     grid-template-columns: 65% 35%;
     grid-template-rows: 32% 68%;
     height: calc(100vh - 42px);
-    gap: 21px;
 }
 
 .aboutMeText {
