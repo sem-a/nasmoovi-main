@@ -84,17 +84,19 @@ span.navTriggerIcon::after {
 
 span.navTriggerIconActive {
     /* Стили для превращения иконки в крестик */
-    background-color: #f6f6f4; /* Скрыть центральную линию */
+    visibility: hidden;/* Скрыть центральную линию */
 }
 
 span.navTriggerIconActive::before {
     transform: rotate(45deg);
     top: 0;
+    visibility: visible;
 }
 
 span.navTriggerIconActive::after {
     transform: rotate(-45deg);
     top: 0;
+    visibility: visible;
 }
 
 span.navTriggerIcon,
