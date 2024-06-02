@@ -1,65 +1,72 @@
 .slideContent {
-    margin: 0 auto;
-    width: 70%;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    margin: auto; /* Центрирование слайда */
+    width: 70%; /* Ширина слайда составляет 70% от родительского элемента */
+    height: 100vh; /* Высота слайда равна высоте окна просмотра */
+    display: flex; /* Использование flexbox для внутреннего содержимого */
+    flex-direction: column; /* Элементы располагаются в колонку */
+    justify-content: space-between; /* Распределение пространства между элементами */
 }
 
+/* Стили для блока с текстом комментария */
 .slideComment {
-    margin-top: auto;
-    position: relative;
-}
-.slideAbsoluteSvg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
+    position: relative; /* Относительное позиционирование для дочерних абсолютно позиционированных элементов */
+    flex-grow: 1; /* Элемент займет все доступное пространство */
+    display: flex; /* Использование flexbox для содержимого */
+    flex-direction: column; /* Элементы располагаются в колонку */
+    justify-content: center; /* Центрирование содержимого по вертикали */
 }
 
+/* Стили для абсолютно позиционированного SVG-изображения */
+.slideAbsoluteSvg {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 0; /* Позиция вверху контейнера */
+    left: 0; /* Позиция по центру контейнера */
+    transform: translate(-50%, -50%); /* Смещение для центрирования изображения по горизонтали */
+}
+
+/* Стили для параграфа с комментарием */
 .slideComment p {
-    font-size: 32px;
-    text-align: justify;
-}
-.author {
+    font-size: 32px; /* Размер шрифта комментария */
+    text-align: justify; /* Выравнивание текста по ширине */
     position: relative;
-    font-size: 20px;
-    text-align: right;
-    margin-top: 49px;
 }
+
+/* Стили для имени автора комментария */
+.author {
+    font-size: 20px; /* Размер шрифта имени автора */
+    text-align: right; /* Выравнивание текста по правому краю */
+    align-self: flex-end; /* Выравнивание элемента по правому краю flex контейнера */
+}
+
 .line {
-    position: absolute;
-    top: -7px;
-    right: 0;
-    width: 147px;
-    height: 1px;
-    background-color: #776f60;
+    width: 147px; /* Ширина линии */
+    height: 1px; /* Высота линии */
+    background-color: #776f60; /* Цвет линии */
+    margin-top: 14px;
 }
-/* Стили для изменения цвета стрелок */
+
+/* Стили для изменения цвета стрелок слайдера */
 :global(.swiper-button-next),
 :global(.swiper-button-prev) {
-    color: rgba(119, 111, 96, 0.5); /* Установите желаемый цвет для стрелок */
-    
+    color: rgba(119, 111, 96, 0.5); /* Цвет стрелок */
 }
 
-/* Стили для изменения цвета псевдоэлементов, которые формируют стрелки */
+/* Стили для изменения цвета и толщины псевдоэлементов стрелок */
 :global(.swiper-button-next)::after,
 :global(.swiper-button-prev)::after {
-    color: rgba(119, 111, 96, 0.5); /* Установите желаемый цвет для стрелок */
-    border-width: 1px;
+    color: rgba(119, 111, 96, 0.5); /* Цвет стрелок */
+    border-width: 1px; /* Толщина границы стрелок */
 }
 
+/* Адаптивные стили для мобильных устройств */
 @media screen and (max-width: 720px) {
     .slideComment p {
-        font-size: 24px;
-        text-align: justify;
+        font-size: 24px; /* Уменьшенный размер шрифта комментария */
     }
 }
 
 @media screen and (max-width: 450px) {
     .slideComment p {
-        font-size: 20px;
-        text-align: justify;
+        font-size: 20px; /* Еще более уменьшенный размер шрифта комментария */
     }
-
 }

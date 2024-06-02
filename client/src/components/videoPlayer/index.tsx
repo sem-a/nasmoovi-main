@@ -5,8 +5,8 @@ import styles from "./index.module.css";
 import { PATHS } from "../../paths";
 
 interface VideoPlayerProps {
-    title: string; // Название видео
-    url: string; // Путь к видео
+    title: string; 
+    url: string;
     alignItems: string;
 }
 type playerWidthType = string | number | undefined;
@@ -18,7 +18,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     url,
     alignItems,
 }) => {
-    // Создаем ссылку на контейнер видеоплеера
+    
     const playerContainerRef = useRef<HTMLDivElement>(null);
 
     const [playerWidth, setPlayerWidth] = useState<playerWidthType>();

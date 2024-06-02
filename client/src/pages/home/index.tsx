@@ -6,7 +6,6 @@ import { useGetAllCommentQuery } from "../../app/services/comment";
 import { Container } from "../../components/containers";
 import styles from "./index.module.css";
 import CustomSlider from "../../components/slider";
-import Marquee from "../../components/marquee";
 import CustomMarquee from "../../components/marquee";
 import LoadingScreen from "../../components/loading";
 
