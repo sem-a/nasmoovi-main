@@ -26,7 +26,7 @@ const PortfolioList = () => {
     if (isError) {
         return <ServerError />;
     }
-    if (!portfolio) {
+    if (!portfolio || portfolio.length == 0) {
         return <NoData />;
     }
 

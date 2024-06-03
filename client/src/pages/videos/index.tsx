@@ -18,7 +18,7 @@ const VideosList = () => {
     if (isError) {
         <ServerError />;
     }
-    if (!videos) {
+    if (!videos || videos.length === 0) {
         return <NoData />;
     }
 

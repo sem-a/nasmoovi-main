@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ImageCheckbox } from "../../../components/form-item";
-
-import {
-    useGetForIdPortfolioQuery,
-    useUpdatePreviewPortfolioMutation,
-} from "../../../app/services/portfolio";
+import { useGetForIdPortfolioQuery, useUpdatePreviewPortfolioMutation } from "../../../app/services/portfolio";
 import { Form, Button } from "antd";
 import { AdminContainer } from "../../../components/containers";
 import styles from "./index.module.css";
@@ -13,21 +9,19 @@ import LoadingScreen from "../../../components/loading";
 import ServerError from "../../../components/error";
 import NoData from "../../../components/nodata";
 
-// Определите типы для элементов вашего портфолио
 interface PortfolioItem {
     id: string;
     imgPath: string;
     preview: boolean;
-    weddingId?: string; // предполагаем, что это поле может быть необязательным
+    weddingId?: string;
 }
 
-// Определите тип для состояния выбранных изображений
 interface SelectedImages {
     [key: string]: boolean;
 }
 
 const SelectPreview: React.FC = () => {
-    const { id } = useParams<{ id: string }>(); // Указываем тип параметров маршрута
+    const { id } = useParams<{ id: string }>();
     const [selectedImages, setSelectedImages] = useState<SelectedImages>({});
     const [updatePreview] = useUpdatePreviewPortfolioMutation();
 
@@ -36,6 +30,18 @@ const SelectPreview: React.FC = () => {
         isLoading,
         isError,
     } = useGetForIdPortfolioQuery(id!);
+
+    useEffect(() => {
+        if (portfolio) {
+            const newSelectedImages: SelectedImages = {};
+            portfolio.forEach((item: PortfolioItem) => {
+                if (item.preview) {
+                    newSelectedImages[item.id] = true;
+                }
+            });
+            setSelectedImages(newSelectedImages);
+        }
+    }, [portfolio]);
 
     const handleImageChange = (imageId: string, isChecked: boolean): void => {
         setSelectedImages((prevSelectedImages) => ({
@@ -47,15 +53,11 @@ const SelectPreview: React.FC = () => {
     const handleSubmit = async (): Promise<void> => {
         const updatePromises = Object.entries(selectedImages)
             .map(([imageId, isPreview]) => {
-                if (isPreview) {
-                    return updatePreview({
-                        id: imageId,
-                        preview: isPreview,
-                    }).unwrap();
-                }
-                return undefined;
-            })
-            .filter(Boolean);
+                return updatePreview({
+                    id: imageId,
+                    preview: isPreview,
+                }).unwrap();
+            });
 
         try {
             await Promise.all(updatePromises);
@@ -70,14 +72,14 @@ const SelectPreview: React.FC = () => {
     if (isError) return <ServerError />;
     if (!portfolio) return <NoData />;
 
-    const portfolioList = portfolio.map((item) => (
+    const portfolioList = portfolio.map((item: PortfolioItem) => (
         <ImageCheckbox
             key={item.id}
             id={item.id}
             src={item.imgPath}
-            alt={item.id}
+            alt={`Изображение ${item.id}`}
             onChange={handleImageChange}
-            checked={selectedImages[item.id]}
+            checked={selectedImages[item.id] ?? item.preview}
         />
     ));
 

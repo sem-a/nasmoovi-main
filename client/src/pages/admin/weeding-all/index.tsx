@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     useDelWeedingMutation,
     useGetAllWeedingsQuery,
@@ -11,6 +11,9 @@ import styles from "./index.module.css";
 import ServerError from "../../../components/error";
 
 const WeedingAll = () => {
+
+    const navigate = useNavigate();
+
     const {
         data: weedings,
         isLoading,
@@ -22,9 +25,7 @@ const WeedingAll = () => {
     const [deleteWeeding] = useDelWeedingMutation();
 
     const handleEdit = (id: string) => {
-        // Логика для редактирования свадьбы
-        console.log("Редактировать свадьбу с ID:", id);
-        // Здесь может быть вызов навигации или открытие модального окна для редактирования
+        navigate(`${PATHS.preview}/${id}`); 
     };
 
     const handleDelete = async (id: string) => {

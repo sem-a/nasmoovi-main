@@ -33,7 +33,7 @@ const WeedingsList = () => {
     if (isError) {
         return <ServerError />;
     }
-    if (!weedings) {
+    if (!weedings || weedings.length === 0) {
         return <NoData />;
     }
 
