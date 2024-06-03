@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { PATHS } from "./paths";
 import { Provider } from "react-redux";
-import { Auth } from "./features/auth/auth";
 import { store } from "./app/store";
 import Home from "./pages/home";
 import Login from "./pages/admin/admin-login";
@@ -11,7 +10,6 @@ import WeedingsPage from "./pages/weedings";
 import PortfolioPage from "./pages/portfolio";
 import ProtectedRoute from "./components/protected-route";
 import WeedingAdd from "./pages/admin/weeding-add";
-import Status from "./pages/status";
 import PortfolioAdd from "./pages/admin/portfolio-add";
 import SelectPreview from "./pages/admin/select-preview";
 import WeedingAll from "./pages/admin/weeding-all";
@@ -45,14 +43,6 @@ const router = createBrowserRouter([
         element: (
             <ProtectedRoute>
                 <WeedingAdd />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: `${PATHS.status}/:status`,
-        element: (
-            <ProtectedRoute>
-                <Status />
             </ProtectedRoute>
         ),
     },

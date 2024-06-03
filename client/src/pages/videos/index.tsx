@@ -1,5 +1,6 @@
 import { useGetAllVideoQuery } from '../../app/services/video';
 import { Container } from '../../components/containers';
+import ServerError from '../../components/error';
 import Layout from '../../components/layout';
 import LoadingScreen from '../../components/loading';
 import VideoPlayer from '../../components/videoPlayer';
@@ -14,7 +15,7 @@ const VideosList = () => {
         return <LoadingScreen />;
     }
     if (isError) {
-        return <div>Ошибка!</div>;
+        <ServerError />;
     }
     if (!videos) {
         return <div>undefined</div>;

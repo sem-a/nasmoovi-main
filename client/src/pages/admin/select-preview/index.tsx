@@ -10,6 +10,7 @@ import { Form, Button } from "antd";
 import { AdminContainer } from "../../../components/containers";
 import styles from "./index.module.css";
 import LoadingScreen from "../../../components/loading";
+import ServerError from "../../../components/error";
 
 // Определите типы для элементов вашего портфолио
 interface PortfolioItem {
@@ -65,7 +66,7 @@ const SelectPreview: React.FC = () => {
     };
 
     if (isLoading) return <LoadingScreen />;
-    if (isError) return <div>Ошибка загрузки данных</div>;
+    if (isError) return <ServerError />;
     if (!portfolio) return <div>Данные не найдены</div>;
 
     const portfolioList = portfolio.map((item) => (

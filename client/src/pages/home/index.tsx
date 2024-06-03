@@ -8,6 +8,7 @@ import styles from "./index.module.css";
 import CustomSlider from "../../components/slider";
 import CustomMarquee from "../../components/marquee";
 import LoadingScreen from "../../components/loading";
+import ServerError from "../../components/error";
 
 const Home: React.FC = () => {
     const { data: comments, isLoading, isError } = useGetAllCommentQuery();
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
         return <LoadingScreen />;
     }
     if (isError) {
-        return <div>Ошибка!</div>;
+        return <ServerError/>;
     }
     if (!comments) {
         return <div>undefind</div>;

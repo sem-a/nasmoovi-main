@@ -9,6 +9,7 @@ import { Container } from "../../components/containers";
 import styles from "./index.module.css";
 import { PATHS } from "../../paths";
 import PortfolioCard from "../../components/portfolio-card";
+import ServerError from "../../components/error";
 
 const PortfolioList = () => {
     const { id } = useParams<{ id: string }>();
@@ -22,7 +23,7 @@ const PortfolioList = () => {
         return <LoadingScreen />;
     }
     if (isError) {
-        return <div>Ошибка!</div>;
+        return <ServerError />;
     }
     if (!portfolio) {
         return <div>Портфолио undefined</div>;

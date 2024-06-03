@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { PATHS } from "../../paths";
 import styles from "./index.module.css";
 import LoadingScreen from "../../components/loading";
+import ServerError from "../../components/error";
 
 const WeedingsList = () => {
     const { data: weedings, isLoading, isError } = useGetAllWeedingsQuery();
@@ -29,7 +30,7 @@ const WeedingsList = () => {
         return <LoadingScreen />;
     }
     if (isError) {
-        return <div>Ошибка!</div>;
+        return <ServerError />;
     }
     if (!weedings) {
         return <div>undefined</div>;

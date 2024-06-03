@@ -1,0 +1,15 @@
+.errorPage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.errorPage p {
+  margin-top: 20px;
+  color: #666; /* Дополнительный стиль для абзаца, если нужно */
+}

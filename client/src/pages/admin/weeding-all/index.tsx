@@ -8,6 +8,7 @@ import { AdminContainer } from "../../../components/containers";
 import { useDelWeedingPortfolioMutation } from "../../../app/services/portfolio";
 import { PATHS } from "../../../paths";
 import styles from "./index.module.css";
+import ServerError from "../../../components/error";
 
 const WeedingAll = () => {
     const {
@@ -41,9 +42,7 @@ const WeedingAll = () => {
     if (isLoading) return <p className={styles.loadingMessage}>Загрузка...</p>;
     if (isError)
         return (
-            <p className={styles.errorMessage}>
-                Произошла ошибка при загрузке данных.
-            </p>
+            <ServerError />
         );
 
     return (

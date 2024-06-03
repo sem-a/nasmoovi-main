@@ -2,6 +2,7 @@ import React from "react";
 import { AdminContainer } from "../../../components/containers";
 import styles from "./index.module.css";
 import { useDelVideoMutation, useGetAllVideoQuery } from "../../../app/services/video";
+import ServerError from "../../../components/error";
 
 const VideoAll = () => {
     const {
@@ -27,9 +28,7 @@ const VideoAll = () => {
     if (isLoading) return <p className={styles.loadingMessage}>Загрузка...</p>;
     if (isError)
         return (
-            <p className={styles.errorMessage}>
-                Произошла ошибка при загрузке данных.
-            </p>
+            <ServerError />
         );
 
     return (
