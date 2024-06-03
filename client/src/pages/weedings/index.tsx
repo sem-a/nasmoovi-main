@@ -8,6 +8,7 @@ import { PATHS } from "../../paths";
 import styles from "./index.module.css";
 import LoadingScreen from "../../components/loading";
 import ServerError from "../../components/error";
+import NoData from "../../components/nodata";
 
 const WeedingsList = () => {
     const { data: weedings, isLoading, isError } = useGetAllWeedingsQuery();
@@ -33,7 +34,7 @@ const WeedingsList = () => {
         return <ServerError />;
     }
     if (!weedings) {
-        return <div>undefined</div>;
+        return <NoData />;
     }
 
     const weedingsList = weedings.map((item, index) => {

@@ -10,6 +10,7 @@ import styles from "./index.module.css";
 import { PATHS } from "../../paths";
 import PortfolioCard from "../../components/portfolio-card";
 import ServerError from "../../components/error";
+import NoData from "../../components/nodata";
 
 const PortfolioList = () => {
     const { id } = useParams<{ id: string }>();
@@ -26,7 +27,7 @@ const PortfolioList = () => {
         return <ServerError />;
     }
     if (!portfolio) {
-        return <div>Портфолио undefined</div>;
+        return <NoData />;
     }
 
     const countCol = 4;

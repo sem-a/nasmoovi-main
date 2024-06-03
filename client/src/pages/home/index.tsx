@@ -11,7 +11,7 @@ import LoadingScreen from "../../components/loading";
 import ServerError from "../../components/error";
 
 const Home: React.FC = () => {
-    const { data: comments, isLoading, isError } = useGetAllCommentQuery();
+    let { data: comments, isLoading, isError } = useGetAllCommentQuery();
 
     if (isLoading) {
         return <LoadingScreen />;
@@ -20,7 +20,13 @@ const Home: React.FC = () => {
         return <ServerError/>;
     }
     if (!comments) {
-        return <div>undefind</div>;
+        comments = [
+            {
+                id: '0',
+                name: 'Сальма',
+                comment: "Боже, какая красота! Спасибо, что запечатлела наш день. С тобой было очень комфортно! И какую же невероятную красоту ты творишь!"
+            }
+        ]
     }
 
     return (

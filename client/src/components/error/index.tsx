@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../../components/layout";
 import { H2 } from "../../components/title";
 import styles from "./index.module.css";
 

@@ -3,6 +3,7 @@ import { Container } from '../../components/containers';
 import ServerError from '../../components/error';
 import Layout from '../../components/layout';
 import LoadingScreen from '../../components/loading';
+import NoData from '../../components/nodata';
 import VideoPlayer from '../../components/videoPlayer';
 import styles from './index.module.css';
 
@@ -18,7 +19,7 @@ const VideosList = () => {
         <ServerError />;
     }
     if (!videos) {
-        return <div>undefined</div>;
+        return <NoData />;
     }
 
 

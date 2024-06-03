@@ -11,6 +11,7 @@ import { AdminContainer } from "../../../components/containers";
 import styles from "./index.module.css";
 import LoadingScreen from "../../../components/loading";
 import ServerError from "../../../components/error";
+import NoData from "../../../components/nodata";
 
 // Определите типы для элементов вашего портфолио
 interface PortfolioItem {
@@ -67,7 +68,7 @@ const SelectPreview: React.FC = () => {
 
     if (isLoading) return <LoadingScreen />;
     if (isError) return <ServerError />;
-    if (!portfolio) return <div>Данные не найдены</div>;
+    if (!portfolio) return <NoData />;
 
     const portfolioList = portfolio.map((item) => (
         <ImageCheckbox
