@@ -22,18 +22,22 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const playerContainerRef = useRef<HTMLDivElement>(null);
 
     const [playerWidth, setPlayerWidth] = useState<playerWidthType>();
+    const [playerHeight, setPlayerHeight] = useState<playerWidthType>();
 
     useEffect(() => {
         const windowWidth = window.innerWidth;
 
         if (windowWidth < 740) {
-            setPlayerWidth("500px");
+            setPlayerWidth("640px");
+            setPlayerHeight("360px");
         }
-        if (windowWidth < 600) {
-            setPlayerWidth("400px")
+        if (windowWidth < 660) {
+            setPlayerWidth("427px")
+            setPlayerHeight("240px")
         }
         if (windowWidth < 450) {
-            setPlayerWidth("300px")
+            setPlayerWidth("320px")
+            setPlayerHeight("180px")
         }
 
         // Типизация для параметра entries в observerCallback
@@ -80,6 +84,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 controls
                 muted={true}
                 width={playerWidth}
+                height={playerHeight}
             />
             <div className={styles.videoName}>
                 <H4 textAlign='end'>{title}</H4>
