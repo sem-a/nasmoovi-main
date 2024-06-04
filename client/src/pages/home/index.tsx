@@ -88,7 +88,8 @@ const Home: React.FC = () => {
                             <p>Санкт-Петербург и Нижний Новгород</p>
                         </div>
                         <div className={styles.aboutMeVideo}>
-                            <img src={require("../../img/video.jpg")} alt="" />
+                            <video src={require("../../img/video.mp4")}
+                            autoPlay loop muted playsInline  />
                         </div>
                         <div className={styles.aboutMePhoto}>
                             <img src={require("../../img/photo.jpg")} alt="" />
