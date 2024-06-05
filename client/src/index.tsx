@@ -18,7 +18,6 @@ import Err404 from "./pages/404";
 import VideoUploadForm from "./pages/admin/video-add";
 import VideosPage from "./pages/videos";
 import VideoAll from "./pages/admin/video-all";
-import Contact from "./pages/contact";
 import LoadingScreen from "./components/loading";
 
 const router = createBrowserRouter([
@@ -89,10 +88,6 @@ const router = createBrowserRouter([
                 <VideoAll />
             </ProtectedRoute>
         ),
-    },
-    {
-        path: PATHS.contact,
-        element: <Contact />,
     },
     {
         path: "*",

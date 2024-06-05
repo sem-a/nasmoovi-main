@@ -50,23 +50,51 @@
 }
 
 .imageCheckbox {
-    display: none; /* Скрыть стандартный чекбокс */
+    display: none;
 }
 
-.imageCheckbox + img {
-    border: 2px solid transparent; /* Стандартная рамка для изображения */
-    transition: border-color 0.3s; /* Плавный переход для рамки */
+/* Контейнер для изображения с относительным позиционированием */
+.imageCheckbox + .imageContainer {
+    position: relative;
 }
 
-.imageCheckbox:checked + img {
-    border-color: #007bff; /* Цвет рамки при выборе чекбокса */
-    /* Добавьте другие стили при выборе, например, overlay или иконку галочки */
+/* Стандартная рамка для контейнера изображения */
+.imageCheckbox + .imageContainer img {
+    display: block;
+    width: 100%; /* или другой нужный размер */
+    height: auto;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
 }
 
-.imageCheckboxImage {
-    width: 300px;
+/* Затемнение фотографии и рамка при выборе чекбокса */
+.imageCheckbox:checked + .imageContainer img {
+    border-color: #007bff;
 }
 
+/* Псевдоэлемент для затемнения */
+.imageCheckbox:checked + .imageContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* полупрозрачный черный фон */
+    pointer-events: none;
+}
+
+/* Псевдоэлемент для галочки */
+.imageCheckbox:checked + .imageContainer::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: white;
+    pointer-events: none;
+}
 /*****************/
 
 /* PasswordInput */

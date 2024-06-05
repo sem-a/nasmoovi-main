@@ -9,7 +9,6 @@ const menuItems = [
     { name: "ГЛАВНАЯ", path: PATHS.home },
     { name: "СВАДЕБНЫЕ СЕРИИ", path: PATHS.weedings },
     { name: "СВАДЕБНЫЕ ВИДЕО", path: PATHS.video },
-    { name: "КОНТАКТЫ", path: PATHS.contact },
 ];
 
 const Header: React.FC = () => {

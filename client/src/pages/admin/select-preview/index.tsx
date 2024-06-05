@@ -51,20 +51,26 @@ const SelectPreview: React.FC = () => {
     };
 
     const handleSubmit = async (): Promise<void> => {
-        const updatePromises = Object.entries(selectedImages)
-            .map(([imageId, isPreview]) => {
-                return updatePreview({
+        try {
+            // Создаем массив промисов на основе selectedImages
+            const updatePromises = Object.entries(selectedImages).map(([imageId, isPreview]) =>
+                updatePreview({
                     id: imageId,
                     preview: isPreview,
-                }).unwrap();
-            });
+                }).unwrap()
+            );
 
-        try {
+            console.log('да')
+    
+            // Ждем, пока все промисы будут успешно выполнены
             await Promise.all(updatePromises);
-            alert("Обновление успешно выполнено!");
+    
+            // Если все промисы выполнены успешно, показываем alert
+            alert('Все изображения успешно обновлены!');
         } catch (error) {
-            console.error("Ошибка при обновлении:", error);
-            alert("Ошибка при обновлении!");
+            // Если в каком-то промисе произошла ошибка, выводим сообщение об ошибке
+            alert('Произошла ошибка при обновлении изображений.');
+            console.error(error);
         }
     };
 
@@ -87,7 +93,7 @@ const SelectPreview: React.FC = () => {
         <AdminContainer>
             <Form onFinish={handleSubmit}>
                 <div className={styles.checkboxList}>{portfolioList}</div>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary">
                     Сохранить изменения
                 </Button>
             </Form>
