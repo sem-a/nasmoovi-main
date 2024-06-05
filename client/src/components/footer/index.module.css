@@ -4,7 +4,13 @@ footer.footer {
     padding: 28px 0px;
     color: white;
 }
-
+.footerItem {
+    text-align: center;
+}
+.footerText {
+    font-size: 16px;
+    color: white;
+}
 .logo h2 {
     font-size: 36px;
     font-family: 'Novelist';
@@ -19,6 +25,6 @@ footer.footer {
 }
 
 .year {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 7px;
 }

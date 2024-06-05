@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useGetForIdPortfolioQuery } from "../../app/services/portfolio";
 import LoadingScreen from "../../components/loading";
-import { Portfolio } from "@prisma/client";
-import BusinessCard from "../../components/portfolio-card";
 import Layout from "../../components/layout";
 import { Container } from "../../components/containers";
 
@@ -74,37 +72,6 @@ const PortfolioList = () => {
             </div>
         );
     }
-
-    // const portfolioList = portfolio.map((item, index) => {
-    //     col += 1;
-    //     if (col == 5) {
-    //         col = 1;
-    //     }
-
-    //     const imgClass =
-    //         item.width > item.height ? styles.horizontal : styles.small;
-    //     // : index % 6 === 0
-    //     // ? styles.large
-    //     // : styles.small;
-
-    //     if (imgClass == styles.horizontal || imgClass == styles.large) {
-    //         col += 1;
-    //     }
-
-    //     if (col == 5 && item.width > item.height) {
-    //         col = 0;
-    //         return <PortfolioCard key={item.id} />;
-    //     }
-
-    //     return (
-    //         <div
-    //             key={item.id}
-    //             className={`${styles.portfolioItem} ${imgClass}`}
-    //         >
-    //             <img src={`${PATHS.URL}${item.imgPath}`} alt={item.id} />
-    //         </div>
-    //     );
-    // });
 
     return <div className={styles.gallery}>{portfolioList}</div>;
 };
