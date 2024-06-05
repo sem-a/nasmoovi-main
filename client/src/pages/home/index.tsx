@@ -31,14 +31,34 @@ const Home: React.FC = () => {
 
     return (
         <Layout>
-            <div className={styles.welcome}>
+
+
+
+        <div className={styles.welcome}>
+            <div className={styles.welcomeImage}>
+                <img src={require('../../img/welcomeImg.jpg')} alt="welcome image" />
+            </div>
+            <div className={styles.marquee}>
+                <CustomMarquee text="NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI" />
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+            {/* <div className={styles.welcome}>
                 <div className={styles.welcomeImage}>
                     <img src={require('../../img/welcomeImg.jpg')} alt="welcome_image" />
                 </div>
                 <div className={styles.marquee}>
                     <CustomMarquee text=" NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI " />
                 </div>
-            </div>
+            </div> */}
             <div className={styles.portfolio}>
                 <H2 textAlign="center">ПОРТФОЛИО</H2>
                 <div className={styles.row}>

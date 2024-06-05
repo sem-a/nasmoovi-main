@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                         <Col>
                             <Link to="/">
                                 <div className={styles.logo}>
-                                    <h2>NASMOOVI</h2>
+                                    <h1>NASMOOVI</h1>
                                 </div>
                             </Link>
                         </Col>
