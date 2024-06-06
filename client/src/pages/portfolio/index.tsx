@@ -9,6 +9,7 @@ import { PATHS } from "../../paths";
 import PortfolioCard from "../../components/portfolio-card";
 import ServerError from "../../components/error";
 import NoData from "../../components/nodata";
+import { Helmet } from "react-helmet";
 
 const PortfolioList = () => {
     const { id } = useParams<{ id: string }>();
@@ -79,6 +80,9 @@ const PortfolioList = () => {
 const PortfolioPage = () => {
     return (
         <Layout>
+            <Helmet>
+                <title>{}</title>
+            </Helmet>
             <Container>
                 <PortfolioList />
             </Container>
