@@ -21,7 +21,7 @@ const Login = () => {
         try {
             await loginUser(data).unwrap();
             setLoading(false);
-            navigate(PATHS.weedingAll); // Измените эту строку для перехода на страницу админа
+            navigate(PATHS.weddingAll); // Измените эту строку для перехода на страницу админа
         } catch (err) {
             setLoading(false);
             const maybeError = isErrorWithMessage(err);

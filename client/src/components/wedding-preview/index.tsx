@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetWeedingPreviewQuery } from "../../app/services/portfolio";
+import { useGetWeddingPreviewQuery } from "../../app/services/portfolio";
 import { H4 } from '../title';
 import styles from "./index.module.css";
 import LoadingScreen from '../loading';
@@ -11,13 +11,13 @@ type Props = {
     alignItems?: string;
 }
 
-type WeedingPreviewImage = {
+type WeddingPreviewImage = {
     id: string;
     imgPath: string;
 }
 
-const WeedingPreview: React.FC<Props> = ({id, name, alignItems}) => {
-    const {data: weedingPreview, isLoading, isError} = useGetWeedingPreviewQuery(id);
+const WeddingPreview: React.FC<Props> = ({id, name, alignItems}) => {
+    const {data: weddingPreview, isLoading, isError} = useGetWeddingPreviewQuery(id);
 
 
 
@@ -30,9 +30,9 @@ const WeedingPreview: React.FC<Props> = ({id, name, alignItems}) => {
     }
 
     return (
-        <div className={styles.weedingPreview} style={{alignItems: alignItems}}>
+        <div className={styles.weddingPreview} style={{alignItems: alignItems}}>
             <div className={styles.imagesContainer}>
-                {weedingPreview?.slice(0, 3).map((image: WeedingPreviewImage) => (
+                {weddingPreview?.slice(0, 3).map((image: WeddingPreviewImage) => (
                     <img
                         key={image.id}
                         src={`${PATHS.URL}${image.imgPath}`}
@@ -47,4 +47,4 @@ const WeedingPreview: React.FC<Props> = ({id, name, alignItems}) => {
     );
 };
 
-export default WeedingPreview;
+export default WeddingPreview;

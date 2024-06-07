@@ -17,12 +17,12 @@ type Props = {
 const MenuAdmin: React.FC<Props> = ({ isAdmin }) => {
     const location = useLocation();
     const menu: Menu[] = [
-        { id: 0, name: "Все свадьбы", path: PATHS.weedingAll, active: true },
+        { id: 0, name: "Все свадьбы", path: PATHS.weddingAll, active: true },
         { id: 1, name: "Все видео", path: PATHS.videoAll, active: true },
         {
             id: 2,
             name: "Добавить свадьбу",
-            path: PATHS.weedingAdd,
+            path: PATHS.weddingAdd,
             active: true,
         },
         { id: 3, name: "Добавить админа", path: PATHS.home, active: isAdmin },

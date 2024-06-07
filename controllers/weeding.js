@@ -7,8 +7,8 @@ const { prisma } = require("../prisma/prisma-client");
  */
 const all = async (req, res) => {
     try {
-        const weedings = await prisma.weeding.findMany();
-        return res.status(200).json(weedings);
+        const weddings = await prisma.wedding.findMany();
+        return res.status(200).json(weddings);
     } catch (err) {
         return res.status(500).json({
             message: "Возникла неизвестная ошибка на сервере!",
@@ -17,24 +17,24 @@ const all = async (req, res) => {
 };
 
 /**
- * @route GET /api/weeding/:id
+ * @route GET /api/wedding/:id
  * @desc Получить одну свадьбу
  * @access Public
  */
 const one = async (req, res) => {
     try {
         const id = req.params.id;
-        const weeding = prisma.weeding.findFirst({
+        const wedding = prisma.wedding.findFirst({
             where: {
                 id,
             },
         });
-        if (!weeding) {
+        if (!wedding) {
             return res.status(404).json({
                 message: "Страница не найдена!",
             });
         } else {
-            return res.status(200).json(weeding);
+            return res.status(200).json(wedding);
         }
     } catch (err) {
         return res.status(500).json({
@@ -44,7 +44,7 @@ const one = async (req, res) => {
 };
 
 /**
- * @route POST /api/weeding/add
+ * @route POST /api/wedding/add
  * @desc Добавить свадьбу
  * @access Public
  */
@@ -56,26 +56,26 @@ const add = async (req, res) => {
         });
     }
     try {
-        const weeding = await prisma.weeding.create({
+        const wedding = await prisma.wedding.create({
             data: {
                 name,
             },
         });
-        return res.status(201).json(weeding);
+        return res.status(201).json(wedding);
     } catch (err) {
         return res.status(400).json({ message: "Возникла неизвестная ошибка" });
     }
 };
 
 /**
- * @route POST /api/weeding/del/:id
+ * @route POST /api/wedding/del/:id
  * @desc Удалить свадьбу
  * @access Public
  */
 const del = async (req, res) => {
     const id = req.params.id;
     try {
-        await prisma.weeding.delete({
+        await prisma.wedding.delete({
             where: {
                 id,
             },
@@ -91,7 +91,7 @@ const del = async (req, res) => {
 };
 
 /**
- * @route POST /api/weeding/edit/:id
+ * @route POST /api/wedding/edit/:id
  * @desc Редактировать свадьбу
  * @access Public
  */
@@ -99,7 +99,7 @@ const edit = async (req, res) => {
     const data = req.body;
     const id = req.params.id;
     try {
-        await prisma.weeding.update({
+        await prisma.wedding.update({
             where: {
                 id,
             },
@@ -114,6 +114,15 @@ const edit = async (req, res) => {
             .json({ message: "Не удалось изменить сотрудника" });
     }
 };
+
+/**
+ * @route GET /api/wedding/name/:id
+ * @desc Получить название свадьбы
+ * @access Public
+ */
+const name = async () => {
+    
+}
 
 module.exports = {
     all,

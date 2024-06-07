@@ -2,7 +2,7 @@ import { Portfolio } from "@prisma/client";
 import { api } from "./api";
 
 interface AddPortfolioArgs {
-    id: string; // Это, вероятно, идентификатор свадьбы (weedingId)
+    id: string; // Это, вероятно, идентификатор свадьбы (weddingId)
     formData: FormData; // Добавляем formData как часть типа
 }
 
@@ -37,13 +37,13 @@ export const portfolioApi = api.injectEndpoints({
                 body: { id, preview },
             }),
         }),
-        getWeedingPreview: builder.query<Portfolio[], string>({
+        getWeddingPreview: builder.query<Portfolio[], string>({
             query: (id) => ({
                 url: `/portfolio/get-preview/${id}`,
                 method: "GET",
             }),
         }),
-        delWeedingPortfolio: builder.mutation<void, string>({
+        delWeddingPortfolio: builder.mutation<void, string>({
             query: (id) => ({
                 url: `/portfolio/alldel/${id}`,
                 method: "POST",
@@ -57,6 +57,6 @@ export const {
     useGetAllPortfolioQuery,
     useGetForIdPortfolioQuery,
     useUpdatePreviewPortfolioMutation,
-    useGetWeedingPreviewQuery,
-    useDelWeedingPortfolioMutation,
+    useGetWeddingPreviewQuery,
+    useDelWeddingPortfolioMutation,
 } = portfolioApi;

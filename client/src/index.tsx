@@ -6,13 +6,13 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import Home from "./pages/home";
 import Login from "./pages/admin/admin-login";
-import WeedingsPage from "./pages/weedings";
+import WeddingsPage from "./pages/weddings";
 import PortfolioPage from "./pages/portfolio";
 import ProtectedRoute from "./components/protected-route";
-import WeedingAdd from "./pages/admin/weeding-add";
+import WeddingAdd from "./pages/admin/wedding-add";
 import PortfolioAdd from "./pages/admin/portfolio-add";
 import SelectPreview from "./pages/admin/select-preview";
-import WeedingAll from "./pages/admin/weeding-all";
+import WeddingAll from "./pages/admin/wedding-all";
 import Err404 from "./pages/404";
 import VideoUploadForm from "./pages/admin/video-add";
 import VideosPage from "./pages/videos";
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: PATHS.weedings,
+    path: PATHS.weddings,
     element: (
       <div>
         <Helmet>
@@ -59,19 +59,19 @@ const router = createBrowserRouter([
             и великолепия свадебной фотографии прямо сейчас"
           />
         </Helmet>
-        <WeedingsPage />
+        <WeddingsPage />
       </div>
     ),
   },
   {
-    path: `${PATHS.weedingOne}/:id`,
+    path: `${PATHS.weddingOne}/:id`,
     element: <PortfolioPage />,
   },
   {
-    path: PATHS.weedingAdd,
+    path: PATHS.weddingAdd,
     element: (
       <ProtectedRoute>
-        <WeedingAdd />
+        <WeddingAdd />
       </ProtectedRoute>
     ),
   },
@@ -92,10 +92,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: PATHS.weedingAll,
+    path: PATHS.weddingAll,
     element: (
       <ProtectedRoute>
-        <WeedingAll />
+        <WeddingAll />
       </ProtectedRoute>
     ),
   },

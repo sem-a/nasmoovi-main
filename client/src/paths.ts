@@ -2,13 +2,13 @@ export const PATHS = {
     home: '/',
     login: '/admin/login',
     register: '/admin/register',
-    weedings: '/weeding',
-    weedingOne: '/weeding', // с конкретным айди
-    weedingAdd: '/admin/weeding/add',
-    weedingAll: '/admin/',
+    weddings: '/wedding',
+    weddingOne: '/wedding', // с конкретным айди
+    weddingAdd: '/admin/wedding/add',
+    weddingAll: '/admin/',
     status: '/status',
     portfolioAdd: '/admin/portfolio/add',
-    preview: '/admin/weeding/preview',
+    preview: '/admin/wedding/preview',
     video: '/video',
     videoAll: '/admin/video',
     videoAdd: '/admin/video/add',

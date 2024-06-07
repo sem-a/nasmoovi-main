@@ -43,7 +43,7 @@ const Home: React.FC = () => {
                 <H2 textAlign="center">ПОРТФОЛИО</H2>
                 <div className={styles.row}>
                     <div className={styles.col}>
-                        <Link to={PATHS.weedings}>
+                        <Link to={PATHS.weddings}>
                             <div
                                 className={styles.portfolioAbs}
                                 style={{ right: "21px" }}

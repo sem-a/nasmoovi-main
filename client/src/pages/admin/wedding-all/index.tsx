@@ -1,28 +1,28 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-    useDelWeedingMutation,
-    useGetAllWeedingsQuery,
-} from "../../../app/services/weeding";
+    useDelWeddingMutation,
+    useGetAllWeddingsQuery,
+} from "../../../app/services/wedding";
 import { AdminContainer } from "../../../components/containers";
-import { useDelWeedingPortfolioMutation } from "../../../app/services/portfolio";
+import { useDelWeddingPortfolioMutation } from "../../../app/services/portfolio";
 import { PATHS } from "../../../paths";
 import styles from "./index.module.css";
 import ServerError from "../../../components/error";
 
-const WeedingAll = () => {
+const WeddingAll = () => {
 
     const navigate = useNavigate();
 
     const {
-        data: weedings,
+        data: weddings,
         isLoading,
         isError,
         refetch,
-    } = useGetAllWeedingsQuery();
+    } = useGetAllWeddingsQuery();
 
-    const [deletePortfolio] = useDelWeedingPortfolioMutation();
-    const [deleteWeeding] = useDelWeedingMutation();
+    const [deletePortfolio] = useDelWeddingPortfolioMutation();
+    const [deleteWedding] = useDelWeddingMutation();
 
     const handleEdit = (id: string) => {
         navigate(`${PATHS.preview}/${id}`); 
@@ -32,7 +32,7 @@ const WeedingAll = () => {
         if (window.confirm("Вы действительно хотите удалить?")) {
             try {
                 await deletePortfolio(id).unwrap();
-                await deleteWeeding(id).unwrap();
+                await deleteWedding(id).unwrap();
                 refetch();
             } catch (err) {
                 console.error(err);
@@ -52,27 +52,27 @@ const WeedingAll = () => {
                 <div className={styles.gridHeader}>ID</div>
                 <div className={styles.gridHeader}>Название</div>
                 <div className={styles.gridHeader}>Действия</div>
-                {weedings?.map((weeding) => (
-                    <React.Fragment key={weeding.id}>
+                {weddings?.map((wedding) => (
+                    <React.Fragment key={wedding.id}>
                         <div className={styles.gridItem}>
-                            <Link to={PATHS.weedingOne + "/" + weeding.id}>
-                                {weeding.id}
+                            <Link to={PATHS.weddingOne + "/" + wedding.id}>
+                                {wedding.id}
                             </Link>
                         </div>
                         <div className={styles.gridItem}>
-                            <Link to={PATHS.weedingOne + "/" + weeding.id}>
-                                {weeding.name}
+                            <Link to={PATHS.weddingOne + "/" + wedding.id}>
+                                {wedding.name}
                             </Link>
                         </div>
                         <div className={styles.gridItem}>
                             <button
-                                onClick={() => handleEdit(weeding.id)}
+                                onClick={() => handleEdit(wedding.id)}
                                 className={styles.editButton}
                             >
                                 Редактировать
                             </button>
                             <button
-                                onClick={() => handleDelete(weeding.id)}
+                                onClick={() => handleDelete(wedding.id)}
                                 className={styles.deleteButton}
                             >
                                 Удалить
@@ -85,4 +85,4 @@ const WeedingAll = () => {
     );
 };
 
-export default WeedingAll;
+export default WeddingAll;

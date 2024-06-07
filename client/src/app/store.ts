@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import auth from "../features/auth/authSlice";
-import weedings from "../features/weeding/weedingSlice";
+import weddings from "../features/wedding/weddingSlice";
 import portfolio from "../features/portfolio/portfolioSlice";
 import comments from '../features/comment/commentSlice';
 import video from '../features/video/videoSlice';
@@ -11,7 +11,7 @@ export const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
         auth,
-        weedings,
+        weddings,
         portfolio,
         comments,
         video

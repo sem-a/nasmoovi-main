@@ -2,19 +2,19 @@ const express = require("express");
 const router = express.Router();
 const { all, one, add, del, edit } = require("../controllers/weeding");
 
-// api/weeding/
+// api/wedding/
 router.get('/', all)
 
-// api/weeding/:id
+// api/wedding/:id
 router.get('/:id', one);
 
-// api/weeding/add
+// api/wedding/add
 router.post("/add", add);
 
-// api/weeding/del/:id
+// api/wedding/del/:id
 router.post("/del/:id", del);
 
-// api/weeding/edit/:id
+// api/wedding/edit/:id
 router.put("/edit/:id", edit);
 
 module.exports = router

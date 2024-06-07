@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Layout from "../../components/layout";
-import WeedingPreview from "../../components/weeding-preview";
-import { useGetAllWeedingsQuery } from "../../app/services/weeding";
+import WeddingPreview from "../../components/wedding-preview";
+import { useGetAllWeddingsQuery } from "../../app/services/wedding";
 import { Link } from "react-router-dom";
 import { PATHS } from "../../paths";
 import LoadingScreen from "../../components/loading";
@@ -9,8 +9,8 @@ import ServerError from "../../components/error";
 import NoData from "../../components/nodata";
 import styles from "./index.module.css";
 
-const WeedingsList = () => {
-  const { data: weedings, isLoading, isError } = useGetAllWeedingsQuery();
+const WeddingsList = () => {
+  const { data: weddings, isLoading, isError } = useGetAllWeddingsQuery();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -32,11 +32,11 @@ const WeedingsList = () => {
   if (isError) {
     return <ServerError />;
   }
-  if (!weedings || weedings.length === 0) {
+  if (!weddings || weddings.length === 0) {
     return <NoData />;
   }
 
-  const weedingsList = weedings.map((item, index) => {
+  const weddingsList = weddings.map((item, index) => {
     const isEven = index % 2 === 0;
     let alignItems = windowWidth < 500 ? "center" : "flex-start";
     if (isEven) {
@@ -44,12 +44,13 @@ const WeedingsList = () => {
     }
 
     return (
-      <div className={styles.weedingsContainer} key={item.id}>
-        <Link to={{
-                pathname: `${PATHS.weedingOne}/${item.id}`
-            
-            }}>
-          <WeedingPreview
+      <div className={styles.weddingsContainer} key={item.id}>
+        <Link
+          to={{
+            pathname: `${PATHS.weddingOne}/${item.id}`,
+          }}
+        >
+          <WeddingPreview
             id={item.id}
             name={item.name}
             alignItems={alignItems}
@@ -59,15 +60,15 @@ const WeedingsList = () => {
     );
   });
 
-  return <div>{weedingsList}</div>;
+  return <div>{weddingsList}</div>;
 };
 
-const WeedingsPage = () => {
+const WeddingsPage = () => {
   return (
     <Layout>
-      <WeedingsList />
+      <WeddingsList />
     </Layout>
   );
 };
 
-export default WeedingsPage;
+export default WeddingsPage;

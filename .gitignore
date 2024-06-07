@@ -3,7 +3,8 @@ build
 .env
 # Keep environment variables out of version control
 client/src/img/video.gif
-uploads/portfolio/*.jpg
+uploads/portfolio/*jpg
+uploads/portfolio/*webp
 uploads/video/*.mov
 uploads/video/*.mp4
 uploads/video/*.avi

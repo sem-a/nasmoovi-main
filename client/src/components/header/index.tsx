@@ -7,7 +7,7 @@ import { PATHS } from "../../paths";
 
 const menuItems = [
     { name: "ГЛАВНАЯ", path: PATHS.home },
-    { name: "СВАДЕБНЫЕ СЕРИИ", path: PATHS.weedings },
+    { name: "СВАДЕБНЫЕ СЕРИИ", path: PATHS.weddings },
     { name: "СВАДЕБНЫЕ ВИДЕО", path: PATHS.video },
 ];
 
