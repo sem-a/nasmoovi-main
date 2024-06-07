@@ -42,7 +42,6 @@ const ImageUploadForm: React.FC = () => {
             } as AddPortfolioArgs).unwrap();
             message.success("Фотографии успешно добавлены в портфолио");
             setFileList([]); // Очистить список файлов после успешной загрузки
-            console.log(result);
         } catch (error: any) {
             message.error("Ошибка при добавлении фотографий");
             console.log("Ошибка при добавлении в портфолио:", error);

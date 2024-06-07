@@ -20,9 +20,10 @@ model Users {
 }
 
 model Wedding {
-  id        String      @id @default(uuid())
-  name      String
-  Portfolio Portfolio[]
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  Portfolio   Portfolio[]
 }
 
 model Portfolio {
@@ -42,7 +43,7 @@ model Comments {
 }
 
 model Video {
-  id String @id @default(uuid())
-  name String
+  id        String @id @default(uuid())
+  name      String
   videoPath String
 }

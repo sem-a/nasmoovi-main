@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { all, one, add, del, edit } = require("../controllers/weeding");
+const { all, one, add, del, edit, name } = require("../controllers/weeding");
 
 // api/wedding/
-router.get('/', all)
+router.get("/", all);
 
 // api/wedding/:id
-router.get('/:id', one);
+router.get("/:id", one);
+
+// api/wedding/name/:id
+router.get("/name/:id", name);
 
 // api/wedding/add
 router.post("/add", add);
@@ -17,4 +20,4 @@ router.post("/del/:id", del);
 // api/wedding/edit/:id
 router.put("/edit/:id", edit);
 
-module.exports = router
+module.exports = router;

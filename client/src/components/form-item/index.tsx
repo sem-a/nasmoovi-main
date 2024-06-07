@@ -3,6 +3,7 @@ import { Button, Form, Input } from "antd";
 import { NamePath } from "antd/es/form/interface";
 import styles from "./index.module.css";
 import { PATHS } from "../../paths";
+import TextArea from "antd/es/input/TextArea";
 
 type PropsCustomButton = {
   children: React.ReactNode;
@@ -22,6 +23,12 @@ type PropsCustomButton = {
 };
 
 type PropsCustomInput = {
+  name: string;
+  placeholder?: string;
+  type?: string;
+};
+
+type PropsCustomTextArea = {
   name: string;
   placeholder?: string;
   type?: string;
@@ -149,6 +156,22 @@ export const CustomInput: React.FC<PropsCustomInput> = ({
         type={type}
         size="large"
       />
+    </Form.Item>
+  );
+};
+
+export const CustomTextarea: React.FC<PropsCustomTextArea> = ({
+  name,
+  placeholder,
+  type = "text",
+}) => {
+  return (
+    <Form.Item
+      name={name}
+      shouldUpdate={true}
+      rules={[{ required: true, message: "Обязательное поле" }]}
+    >
+      <TextArea className={styles.customInput} placeholder={placeholder} />
     </Form.Item>
   );
 };

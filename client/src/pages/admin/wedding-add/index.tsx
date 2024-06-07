@@ -1,6 +1,6 @@
 import { Form } from "antd";
 import { H2 } from "../../../components/title";
-import { CustomButton, CustomInput } from "../../../components/form-item";
+import { CustomButton, CustomInput, CustomTextarea } from "../../../components/form-item";
 import { useNavigate } from "react-router-dom";
 import { useAddWeddingMutation } from "../../../app/services/wedding";
 import { Wedding } from "@prisma/client";
@@ -37,6 +37,9 @@ const WeddingAdd: React.FC = () => {
                     type="text"
                     placeholder="Название свадьбы"
                 />
+                <CustomTextarea name="description"
+                    type="text"
+                    placeholder="Описание свадьбы (2-3 предложения)"/>
                 <CustomButton type="primary" htmlType="submit">
                     Создать
                 </CustomButton>
