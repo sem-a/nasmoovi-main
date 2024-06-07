@@ -1,15 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useGetForIdPortfolioQuery } from "../../app/services/portfolio";
 import LoadingScreen from "../../components/loading";
 import Layout from "../../components/layout";
 import { Container } from "../../components/containers";
-
-import styles from "./index.module.css";
 import { PATHS } from "../../paths";
 import PortfolioCard from "../../components/portfolio-card";
 import ServerError from "../../components/error";
 import NoData from "../../components/nodata";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import styles from "./index.module.css";
 
 const PortfolioList = () => {
     const { id } = useParams<{ id: string }>();
@@ -78,10 +78,13 @@ const PortfolioList = () => {
 };
 
 const PortfolioPage = () => {
+
+    const title = 'title'
+
     return (
         <Layout>
             <Helmet>
-                <title>{}</title>
+                <title>{title}</title>
             </Helmet>
             <Container>
                 <PortfolioList />

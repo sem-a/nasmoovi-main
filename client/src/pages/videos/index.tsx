@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { useGetAllVideoQuery } from '../../app/services/video';
 import { Container } from '../../components/containers';
 import ServerError from '../../components/error';
@@ -44,6 +45,13 @@ const VideosList = () => {
 const VideosPage = () => {
     return(
         <Layout>
+            <Helmet>
+                <title>Свадебные видео фотографа Nasmoovi</title>
+                <meta 
+                name="description" 
+                content="Портфолио свадебных видео Анастасии Соколовой. Моменты вашей жизни " 
+                />
+            </Helmet>
             <Container>
                 <VideosList />
             </Container>
