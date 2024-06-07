@@ -1,41 +1,54 @@
 import { Wedding } from "@prisma/client";
 import { api } from "./api";
 
+type getInfoWeddingProps = {
+    name: string,
+    description: string
+}
+
+const base_url = '/wedding/';
+
 export const weddingApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getAllWeddings: builder.query<Wedding[], void>({
             query: () => ({
-                url: "/wedding",
+                url: base_url,
                 method: "GET",
             }),
         }),
         getWedding: builder.query<Wedding, string>({
             query: (id) => ({
-                url: `/wedding/${id}`,
+                url: `${base_url}${id}`,
                 method: "GET",
             }),
         }),
         addWedding: builder.mutation<Wedding, Wedding>({
             query: (wedding) => ({
-                url: "/wedding/add",
+                url: `${base_url}add`,
                 method: "POST",
                 body: wedding,
             }),
         }),
         editWedding: builder.mutation<string, Wedding>({
             query: (wedding) => ({
-                url: `/wedding/edit/${wedding.id}`,
+                url: `${base_url}edit/${wedding.id}`,
                 method: "PUT",
                 body: wedding,
             }),
         }),
         delWedding: builder.mutation<string, string>({
             query: (id) => ({
-                url: `/wedding/del/${id}`,
+                url: `${base_url}del/${id}`,
                 method: "POST",
                 body: { id },
             }),
         }),
+        getInfoWedding: builder.query<getInfoWeddingProps, string>({
+            query: (id) => ({
+                url: `${base_url}name/${id}`,
+                method: "GET",
+            })
+        })
     }),
 });
 
@@ -44,5 +57,6 @@ export const {
     useGetWeddingQuery,
     useAddWeddingMutation,
     useDelWeddingMutation,
-    useEditWeddingMutation
+    useEditWeddingMutation,
+    useGetInfoWeddingQuery,
 } = weddingApi;

@@ -10,9 +10,13 @@ import NoData from "../../components/nodata";
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 import styles from "./index.module.css";
+import { useGetInfoWeddingQuery } from "../../app/services/wedding";
+
 
 const PortfolioList = () => {
+
     const { id } = useParams<{ id: string }>();
+
     const {
         data: portfolio,
         isLoading,
@@ -79,12 +83,25 @@ const PortfolioList = () => {
 
 const PortfolioPage = () => {
 
-    const title = 'title'
+    const { id } = useParams<{ id: string }>();
+
+    const {data: wedding, isLoading, isError} = useGetInfoWeddingQuery(id!);
+
+    if (isLoading) {
+        return <LoadingScreen />;
+    }
+    if (isError) {
+        return <ServerError />;
+    }
+    if (!wedding) {
+        return <NoData />;
+    }
 
     return (
         <Layout>
             <Helmet>
-                <title>{title}</title>
+                <title>{wedding?.name} | Галерея свадьбы</title>
+                <meta name="description" content={wedding.description} />
             </Helmet>
             <Container>
                 <PortfolioList />
