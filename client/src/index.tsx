@@ -1,4 +1,5 @@
 import React from "react";
+import { hydrate, render } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { PATHS } from "./paths";
@@ -146,8 +147,10 @@ const router = createBrowserRouter([
   }
 ]);
 
+
 const container = document.getElementById("root")!;
 const root = createRoot(container);
+
 
 root.render(
   <React.StrictMode>

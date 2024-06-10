@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const path = require("path");
 const cors = require("cors");
+const fs = require("fs");
 
 require("dotenv").config();
 
@@ -21,5 +22,22 @@ app.use("/api/wedding", require("./routes/wedding"));
 app.use("/api/portfolio", require("./routes/portfolio"));
 app.use("/api/comment", require("./routes/comment"));
 app.use("/api/video", require("./routes/video"));
+
+// Обработка запросов от поисковых ботов
+app.use((req, res, next) => {
+    if (req.headers['user-agent'].includes('bot')) {
+        // Отдавать статические страницы для поисковых ботов
+        const staticPagePath = path.join(__dirname, 'path/to/static/page.html');
+        fs.readFile(staticPagePath, 'utf8', (err, data) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Internal Server Error');
+            }
+            res.send(data);
+        });
+    } else {
+        next();
+    }
+});
 
 module.exports = app;

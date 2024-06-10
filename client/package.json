@@ -30,8 +30,18 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "source": "dist", 
+    "destination": "dist", 
+    "include": [ 
+        "/",
+        "/404",
+        "/500"
+    ]
   },
   "eslintConfig": {
     "extends": [
