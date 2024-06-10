@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         <Layout>
         <div className={styles.welcome}>
             <div className={styles.welcomeImage}>
-                <img src={require('../../img/welcomeImg.jpg')} alt="welcome image" />
+                <img src={require('../../img/welcomeImg.webp')} alt="welcome image" />
             </div>
             <div className={styles.marquee}>
                 <CustomMarquee text="NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI" />
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
                                 <H3>СВАДЕБНЫЕ КАДРЫ</H3>
                             </div>
                             <img
-                                src={require("../../img/portfolioCards.png")}
+                                src={require("../../img/portfolioCards.webp")}
                                 alt="портфолио фото"
                                 className={styles.colImg}
                             />
@@ -66,7 +66,7 @@ const Home: React.FC = () => {
                                 <H3>СВАДЕБНЫЕ ВИДЕО</H3>
                             </div>
                             <img
-                                src={require("../../img/portfolioVideo.png")}
+                                src={require("../../img/portfolioVideo.webp")}
                                 alt="портфолио видео"
                                 className={styles.colImg}
                             />
@@ -85,14 +85,14 @@ const Home: React.FC = () => {
                                 атмосферу вокруг. Создаю душевные кадры и фильмы
                                 про ваши чувства.
                             </p>
-                            <p>Санкт-Петербург и Нижний Новгород</p>
+                            <p>Санкт-Петербург и область</p>
                         </div>
                         <div className={styles.aboutMeVideo}>
-                            <video src={require("../../img/video.mp4")}
-                            autoPlay loop muted playsInline  />
+                            <video src={require("../../img/video.mp4")} 
+                            autoPlay loop muted playsInline />
                         </div>
                         <div className={styles.aboutMePhoto}>
-                            <img src={require("../../img/photo.jpg")} alt="" />
+                            <img src={require("../../img/photo.webp")} alt="фото обо мне" />
                         </div>
                     </div>
                 </Container>

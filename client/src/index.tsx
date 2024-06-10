@@ -20,6 +20,7 @@ import VideoAll from "./pages/admin/video-all";
 import LoadingScreen from "./components/loading";
 import "./index.css";
 import { Helmet } from "react-helmet";
+import ServerError from "./components/error";
 
 const router = createBrowserRouter([
   {
@@ -139,6 +140,10 @@ const router = createBrowserRouter([
     path: PATHS.loading,
     element: <LoadingScreen />,
   },
+  {
+    path: PATHS.errorPage,
+    element: <ServerError />,
+  }
 ]);
 
 const container = document.getElementById("root")!;

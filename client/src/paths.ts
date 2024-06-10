@@ -14,6 +14,8 @@ export const PATHS = {
     videoAdd: '/admin/video/add',
     contact: '/contact',
     loading: '/loading',
+    errorPage: '/500',
+    notFoundPage: '/404',
     URL: 'http://localhost:8000/'
     // URL: 'https://sem-a-nasmoovi-demo-bad7.twc1.net/'
 } as const;

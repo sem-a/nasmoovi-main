@@ -10,7 +10,7 @@ const CustomMarquee: React.FC<Props> = ( {text, speed = 50}) => {
   return (
     <Marquee pauseOnHover speed={speed} gradient={false}>
       <div style={{ whiteSpace: 'nowrap', fontFamily: 'NoveList', fontSize: '64px', paddingLeft: '14px'}}>
-        {text}
+        <h1>{text}</h1>
       </div>
     </Marquee>
   );
