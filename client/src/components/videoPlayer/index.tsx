@@ -11,8 +11,6 @@ interface VideoPlayerProps {
 }
 type playerWidthType = string | number | undefined;
 
-type textAlignType = "end" | "center" | "start" | "left" | "right" | "justify" | "match-parent" | undefined
-
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
     title,
     url,
@@ -39,14 +37,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             setPlayerWidth("320px")
             setPlayerHeight("180px")
         }
-
-        // Типизация для параметра entries в observerCallback
         const observerCallback: IntersectionObserverCallback = (entries) => {
             const player = playerContainerRef.current?.querySelector("video");
             if (!player) return;
 
-            const entry = entries[0]; // У нас только один элемент, поэтому берем первый
-            // Воспроизводим или ставим на паузу видео
+            const entry = entries[0];
             if (entry.isIntersecting) {
                 player.play();
             } else {
@@ -65,13 +60,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             observerOptions
         );
         if (playerContainerRef.current) {
-            observer.observe(playerContainerRef.current); // Наблюдаем за контейнером плеера
+            observer.observe(playerContainerRef.current);
         }
 
         return () => {
-            observer.disconnect(); // Отключаемся при размонтировании компонента
+            observer.disconnect();
         };
-    }, [window.innerWidth]);
+    }, []);
 
     return (
         <div

@@ -1,5 +1,4 @@
 import React from "react";
-import { hydrate, render } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { PATHS } from "./paths";
@@ -44,7 +43,14 @@ const router = createBrowserRouter([
   },
   {
     path: PATHS.login,
-    element: <Login />,
+    element: (
+      <div>
+        <Helmet>
+          <title>Административная панель | Логин</title>
+        </Helmet>
+        <Login />
+      </div>
+    ),
   },
   {
     path: PATHS.weddings,
@@ -73,7 +79,12 @@ const router = createBrowserRouter([
     path: PATHS.weddingAdd,
     element: (
       <ProtectedRoute>
-        <WeddingAdd />
+        <div>
+          <Helmet>
+            <title>Административная панель | Добавить свадьбу</title>
+          </Helmet>
+          <WeddingAdd />
+        </div>
       </ProtectedRoute>
     ),
   },
@@ -81,7 +92,12 @@ const router = createBrowserRouter([
     path: `${PATHS.portfolioAdd}/:id`,
     element: (
       <ProtectedRoute>
-        <PortfolioAdd />
+        <div>
+          <Helmet>
+            <title>Административная панель | Загрузить портфолио</title>
+          </Helmet>
+          <PortfolioAdd />
+        </div>
       </ProtectedRoute>
     ),
   },
@@ -89,7 +105,12 @@ const router = createBrowserRouter([
     path: `${PATHS.preview}/:id`,
     element: (
       <ProtectedRoute>
-        <SelectPreview />
+        <div>
+          <Helmet>
+            <title>Административная панель | Выбрать превью</title>
+          </Helmet>
+          <SelectPreview />
+        </div>
       </ProtectedRoute>
     ),
   },
@@ -97,7 +118,12 @@ const router = createBrowserRouter([
     path: PATHS.weddingAll,
     element: (
       <ProtectedRoute>
-        <WeddingAll />
+        <div>
+          <Helmet>
+            <title>Административная панель | Все свадьбы</title>
+          </Helmet>
+          <WeddingAll />
+        </div>
       </ProtectedRoute>
     ),
   },
@@ -105,7 +131,12 @@ const router = createBrowserRouter([
     path: PATHS.videoAdd,
     element: (
       <ProtectedRoute>
-        <VideoUploadForm />
+        <div>
+          <Helmet>
+            <title>Административная панель | Добавить видео</title>
+          </Helmet>
+          <VideoUploadForm />
+        </div>
       </ProtectedRoute>
     ),
   },
@@ -115,11 +146,14 @@ const router = createBrowserRouter([
       <div>
         <Helmet>
           <title>
-          Свадебные видео | Портфолио видеографа Nasmoovi в Санкт-Петербурге
+            Свадебные видео | Портфолио видеографа Nasmoovi в Санкт-Петербурге
           </title>
-          <meta name="description" content="Погрузитесь в атмосферу свадебных моментов 
+          <meta
+            name="description"
+            content="Погрузитесь в атмосферу свадебных моментов 
           с видео от фотографа и видеографа Анастасии Соколовой Nasmoovi. 
-          Позвольте мне запечатлеть вашу историю любви в неповторимом видеоформате" />
+          Позвольте мне запечатлеть вашу историю любви в неповторимом видеоформате"
+          />
         </Helmet>
         <VideosPage />
       </div>
@@ -129,28 +163,52 @@ const router = createBrowserRouter([
     path: PATHS.videoAll,
     element: (
       <ProtectedRoute>
-        <VideoAll />
+        <div>
+          <Helmet>
+            <title>Административная панель | Все видео</title>
+          </Helmet>
+          <VideoAll />
+        </div>
       </ProtectedRoute>
     ),
   },
   {
     path: "*",
-    element: <Err404 />,
+    element: (
+      <div>
+        <Helmet>
+          <title>404</title>
+        </Helmet>
+        <Err404 />
+      </div>
+    ),
   },
   {
     path: PATHS.loading,
-    element: <LoadingScreen />,
+    element: (
+      <div>
+        <Helmet>
+          <title>Загрузка...</title>
+        </Helmet>
+        <LoadingScreen />
+      </div>
+    ),
   },
   {
     path: PATHS.errorPage,
-    element: <ServerError />,
-  }
+    element: (
+      <div>
+        <Helmet>
+          <title>505</title>
+        </Helmet>
+        <ServerError />
+      </div>
+    ),
+  },
 ]);
-
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
-
 
 root.render(
   <React.StrictMode>

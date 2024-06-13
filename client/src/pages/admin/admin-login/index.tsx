@@ -12,18 +12,14 @@ import styles from "./index.module.css";
 
 const Login = () => {
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
-    const [loginUser, loginUserResult] = useLoginMutation();
+    const [loginUser] = useLoginMutation();
     const [error, setError] = useState("");
 
     const login = async (data: UserData) => {
-        setLoading(true);
         try {
             await loginUser(data).unwrap();
-            setLoading(false);
             navigate(PATHS.weddingAll); // Измените эту строку для перехода на страницу админа
         } catch (err) {
-            setLoading(false);
             const maybeError = isErrorWithMessage(err);
             if (maybeError) {
                 setError(err.data.message);

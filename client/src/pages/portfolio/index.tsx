@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetForIdPortfolioQuery } from "../../app/services/portfolio";
 import LoadingScreen from "../../components/loading";
 import Layout from "../../components/layout";
@@ -8,7 +8,6 @@ import PortfolioCard from "../../components/portfolio-card";
 import ServerError from "../../components/error";
 import NoData from "../../components/nodata";
 import { Helmet } from "react-helmet";
-import { useEffect } from "react";
 import styles from "./index.module.css";
 import { useGetInfoWeddingQuery } from "../../app/services/wedding";
 
@@ -29,20 +28,19 @@ const PortfolioList = () => {
     if (isError) {
         return <ServerError />;
     }
-    if (!portfolio || portfolio.length == 0) {
+    if (!portfolio || portfolio.length === 0) {
         return <NoData />;
     }
 
     const countCol = 4;
     let col = 0;
-    let row = 0;
 
     let portfolioList: React.ReactNode[] = [];
 
     for (let i = 0; i < portfolio.length; i++) {
         const item = portfolio[i];
         col += 1;
-        if (col == countCol + 1) {
+        if (col === countCol + 1) {
             col = 1;
         }
         const imgClass =
@@ -52,14 +50,14 @@ const PortfolioList = () => {
                 // ? styles.large
                 : styles.small;
 
-        if (imgClass == styles.horizontal) {
+        if (imgClass === styles.horizontal) {
             col += 1;
         }
         // if (imgClass == styles.large) {
         //     col += 1;
         // }
 
-        if (col == 5 && imgClass == styles.horizontal) {
+        if (col === 5 && imgClass === styles.horizontal) {
             col = 0;
             portfolioList.push(
                 <PortfolioCard key={`portfolio-card-${item.id}`} />

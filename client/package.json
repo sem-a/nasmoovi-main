@@ -30,18 +30,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "reactSnap": {
-    "source": "dist", 
-    "destination": "dist", 
-    "include": [ 
-        "/",
-        "/404",
-        "/500"
-    ]
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@svgr/webpack": "^8.1.0",
     "@types/react-slick": "^0.23.13",
     "file-loader": "^6.2.0"

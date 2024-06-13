@@ -5,3 +5,11 @@
     align-items: center;
     justify-content: center;
 }
+.notFoundPage h1 {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-family: 'Novelist';
+    padding: 0;
+    margin: 21px 0 10px 0;
+}
+

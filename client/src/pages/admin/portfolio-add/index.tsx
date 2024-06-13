@@ -36,7 +36,7 @@ const ImageUploadForm: React.FC = () => {
 
         try {
             // Теперь используем AddPortfolioArgs для типизации аргументов мутации
-            const result = await addPortfolio({
+            await addPortfolio({
                 id,
                 formData,
             } as AddPortfolioArgs).unwrap();

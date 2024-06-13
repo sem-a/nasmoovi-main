@@ -4,13 +4,10 @@ import { CustomButton, CustomInput, CustomTextarea } from "../../../components/f
 import { useNavigate } from "react-router-dom";
 import { useAddWeddingMutation } from "../../../app/services/wedding";
 import { Wedding } from "@prisma/client";
-import { isErrorWithMessage } from "../../../utils/is-error-with-message";
-import { useState } from "react";
 import { PATHS } from "../../../paths";
 import { AdminContainer } from "../../../components/containers";
 
 const WeddingAdd: React.FC = () => {
-    const [error, setError] = useState("");
     const navigate = useNavigate();
     const [addWedding] = useAddWeddingMutation();
 
@@ -19,12 +16,7 @@ const WeddingAdd: React.FC = () => {
             const wedding = await addWedding(data).unwrap();
             navigate(PATHS.portfolioAdd + `/${wedding.id}`);
         } catch (err) {
-            const maybeError = isErrorWithMessage(err)
-            if (maybeError) {
-                setError(err.data.message);
-            } else {
-                setError("Неизвестная ошибка!");
-            }
+            console.error(err)
         }
     };
 

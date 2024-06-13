@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import { useGetAllVideoQuery } from '../../app/services/video';
 import { Container } from '../../components/containers';
 import ServerError from '../../components/error';
@@ -25,7 +24,7 @@ const VideosList = () => {
 
 
     const videosList = videos.map((item, index) => {
-        const isEven = index % 2 == 0;
+        const isEven = index % 2 === 0;
         let alignItems = "flex-start";
         if (isEven) {
             alignItems = "flex-end";
@@ -45,13 +44,6 @@ const VideosList = () => {
 const VideosPage = () => {
     return(
         <Layout>
-            <Helmet>
-                <title>Свадебные видео фотографа Nasmoovi</title>
-                <meta 
-                name="description" 
-                content="Портфолио свадебных видео Анастасии Соколовой. Моменты вашей жизни " 
-                />
-            </Helmet>
             <Container>
                 <VideosList />
             </Container>

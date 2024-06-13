@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         <Layout>
         <div className={styles.welcome}>
             <div className={styles.welcomeImage}>
-                <img src={require('../../img/welcomeImg.webp')} alt="welcome image" />
+                <img src={require('../../img/welcomeImg.webp')} alt="welcome" />
             </div>
             <div className={styles.marquee}>
                 <CustomMarquee text="NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI  NASMOOVI" />
