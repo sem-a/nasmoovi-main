@@ -130,7 +130,7 @@ export const ImageCheckbox: React.FC<PropsImageCheckBox> = ({
       />
       <div className={styles.imageContainer}>
         <img
-          src={`${PATHS.URL}${src}`}
+          src={`${src}`}
           alt={alt}
           className={styles.imageCheckboxImage}
         />

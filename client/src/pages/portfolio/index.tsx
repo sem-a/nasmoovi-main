@@ -71,7 +71,7 @@ const PortfolioList = () => {
                 key={item.id}
                 className={`${styles.portfolioItem} ${imgClass}`}
             >
-                <img src={`${PATHS.URL}${item.imgPath}`} alt={item.id} />
+                <img src={`${item.imgPath}`} alt={item.id} />
             </div>
         );
     }

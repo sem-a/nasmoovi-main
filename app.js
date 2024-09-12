@@ -3,10 +3,13 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const path = require("path");
 const cors = require("cors");
+const { c } = require("./cloud-s3/cloud");
 
 require("dotenv").config();
 
 const app = express();
+
+c();
 
 app.use(logger("dev"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

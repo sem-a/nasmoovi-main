@@ -75,7 +75,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             style={{ alignItems }}
         >
             <ReactPlayer
-                url={`${PATHS.URL}${url}`}
+                url={`${url}`}
                 controls
                 muted={true}
                 width={playerWidth}

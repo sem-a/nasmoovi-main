@@ -1,6 +1,7 @@
 const { prisma } = require("../prisma/prisma-client");
 const fs = require("fs");
 const util = require("util");
+const { s3 } = require("../cloud-s3/cloud");
 
 const unlinkAsync = util.promisify(fs.unlink);
 
@@ -31,10 +32,18 @@ const add = async (req, res) => {
         // Поскольку загружается один файл, используем req.file, а не req.files
         const filePath = req.file.path;
 
+        // Загрузка файла в Yandex Cloud Storage
+        let upload = await s3.Upload(
+            {
+                path: filePath, // Используем путь к файлу из объекта файла
+            },
+            "/video/"
+        );
+
         // Создаем запись в базе данных для видео
         const video = await prisma.video.create({
             data: {
-                videoPath: filePath,
+                videoPath: `https://nasmoovi-backet.storage.yandexcloud.net/${upload.Key}`,
                 name: name,
             },
         });
@@ -70,11 +79,10 @@ const del = async (req, res) => {
 
          // Проверяем, существует ли информация о видео
          if (video) {
-            // Путь к файлу видео
-            const videoPath = `${video.videoPath}`;
 
-            // Удаляем файл видео с файловой системы
-            await unlinkAsync(videoPath);
+            const pathParts = video.videoPath.split("/");
+            const filePath = pathParts[pathParts.length - 1];
+            await s3.Remove(`/video/${filePath}`);
 
             // Удаляем запись о видео из базы данных
             await prisma.video.deleteMany({

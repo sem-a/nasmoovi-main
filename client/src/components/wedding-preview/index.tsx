@@ -3,7 +3,6 @@ import { useGetWeddingPreviewQuery } from "../../app/services/portfolio";
 import { H4 } from '../title';
 import styles from "./index.module.css";
 import LoadingScreen from '../loading';
-import { PATHS } from '../../paths';
 
 type Props = {
     id: string;
@@ -35,7 +34,7 @@ const WeddingPreview: React.FC<Props> = ({id, name, alignItems}) => {
                 {weddingPreview?.slice(0, 3).map((image: WeddingPreviewImage) => (
                     <img
                         key={image.id}
-                        src={`${PATHS.URL}${image.imgPath}`}
+                        src={`${image.imgPath}`}
                         alt={`Фото свадьбы ${name}`}
                         className={styles.previewImage}
                     />
